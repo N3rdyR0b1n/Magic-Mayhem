@@ -98,27 +98,29 @@ public class GenericSpellAbilities {
         boolean piercingqualifier = true;
         while (piercingqualifier) {
             EntityHitResult entityhit = ProjectileUtil.raycast(player, start, end, box, (entity) -> (!targets.contains(entity)) && (entity.isAttackable()), range * range);
-            if (entityhit == null)
+            if (entityhit == null) {
                 break;
+            }
             piercingqualifier = entityhit.getType() != HitResult.Type.MISS && piercinglevel > 0;
-            if (entityhit.getType() != HitResult.Type.MISS)
-                lastEntityhit = entityhit;
             if (piercingqualifier) {
                 piercinglevel--;
                 start = entityhit.getPos();
-                if (piercinglevel == 0)
+                if (piercinglevel == 0) {
                     end = entityhit.getPos();
+                }
                 targets.add(entityhit.getEntity());
             }
         }
         for (int i = 0; i < targets.size(); i++) {
             Entity entity = targets.get(i);
-            if (entity instanceof LivingEntity) {
-                entity.damage(entity.getDamageSources().playerAttack(player), 0.01f);
-                entity.damage(ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK), damage);
-                spell.onHit(player, world, entity, 1f);
-                if (((LivingEntity) entity).isDead()) {
-                    spell.onKill(player, world, entity);
+            if (entity.isAlive()) {
+                if (entity instanceof LivingEntity) {
+                    entity.damage(entity.getDamageSources().playerAttack(player), 0.01f);
+                    entity.damage(ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK), damage);
+                    spell.onHit(player, world, entity, 1f);
+                    if (((LivingEntity) entity).isDead()) {
+                        spell.onKill(player, world, entity);
+                    }
                 }
             }
         }
@@ -197,7 +199,7 @@ public class GenericSpellAbilities {
         Vec3d vec3d = shooter.getPos();
         List<LivingEntity> list = world.getNonSpectatingEntities(LivingEntity.class, shooter.getBoundingBox().expand(5.0 * areamultiplier));
         for (LivingEntity livingEntity : list) {
-            if (livingEntity == shooter || ((shooter.distanceTo(livingEntity) / areamultiplier)*(shooter.distanceTo(livingEntity) / areamultiplier)) > 25.0)
+            if (livingEntity.isDead() || livingEntity == shooter || ((shooter.distanceTo(livingEntity) / areamultiplier)*(shooter.distanceTo(livingEntity) / areamultiplier)) > 25.0)
                 continue;
             boolean bl = false;
             for (int i = 0; i < 2; ++i) {
