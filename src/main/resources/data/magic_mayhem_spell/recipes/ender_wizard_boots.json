@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "W": {
+      "item": "minecraft:black_wool"
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "A": {
+      "item": "minecraft:golden_boots"
+    }
+  },
+  "pattern": [
+    "DWD",
+    "WAW",
+    "DWD"
+  ],
+  "result": {
+    "item": "magic_mayhem_spell:ender_wizard_boots"
+  },
+  "show_notification": true
+}

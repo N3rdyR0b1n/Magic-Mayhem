@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+    "key": {
+      "#": {
+        "item": "minecraft:sculk_shrieker"
+      },
+      "R": {
+        "item": "minecraft:sculk"
+      },
+      "P": {
+        "item": "minecraft:iron_ingot"
+      }
+      },
+    "pattern": [
+      "R R",
+      "R#R",
+      "PRP"
+    ],
+  "result": {
+    "item": "magic_mayhem_spell:warden_wizard_ribcage"
+  }
+}

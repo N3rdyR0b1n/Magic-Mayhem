@@ -1,0 +1,102 @@
+{
+
+  "item.modifiers.spell.inventory": "When in Inventory",
+
+  "attribute.name.magic_mayhem.maximum_mana": "Maximum Mana",
+  "attribute.name.magic_mayhem.mana_regeneration": "Mana Regeneration",
+  "attribute.name.magic_mayhem.passive_mana_regeneration": "Passive Mana Regeneration",
+  "attribute.name.magic_mayhem.mana_loss": "Mana Loss",
+  "attribute.name.magic_mayhem.mana_kill": "Mana on Kill",
+  "attribute.name.magic_mayhem.mana_hit": "Mana on Hit",
+
+  "attribute.name.magic_mayhem.health_kill": "Health on Kill",
+  "attribute.name.magic_mayhem.health_hit": "Health on Hit",
+  "attribute.name.magic_mayhem.lifesteal": "Lifesteal",
+
+  "attribute.name.magic_mayhem.casting_speed": "Cast Speed",
+
+  "attribute.name.magic_mayhem.invisibility": "Shadow Stealth",
+
+  "itemgroup.magic_mayhem_magic_items": "Magic Items",
+  "itemgroup.magic_mayhem_spell_scrolls": "Spell Scrolls",
+  "itemgroup.magic_mayhem_spell_drip": "Magic Drip",
+
+  "item.magic_mayhem_spell.simple_spell_book": "Simple Spellbook",
+  "item.magic_mayhem_spell.medium_spell_book": "Steel Spellbook",
+  "item.magic_mayhem_spell.strong_spell_book": "Ender Spellbook",
+
+  "item.magic_mayhem_spell.perfected_containing_wizard_boots": "Classical Boots",
+  "item.magic_mayhem_spell.perfected_containing_wizard_skirt": "Classical Skirt",
+  "item.magic_mayhem_spell.perfected_containing_wizard_robe": "Classical Robes",
+  "item.magic_mayhem_spell.perfected_containing_wizard_hat": "Classical Hat",
+
+  "item.magic_mayhem_spell.warden_wizard_boots": "Sculk Boots",
+  "item.magic_mayhem_spell.warden_wizard_soulpack": "Sculk Soulpack",
+  "item.magic_mayhem_spell.warden_wizard_ribcage": "Sculk Ribcage",
+  "item.magic_mayhem_spell.warden_wizard_horn": "Sculk Horn",
+
+  "item.magic_mayhem_spell.ender_wizard_boots": "Ender Boots",
+  "item.magic_mayhem_spell.ender_wizard_leggings": "Ender Soulpack",
+  "item.magic_mayhem_spell.ender_wizard_tuxedo": "Ender Ribcage",
+  "item.magic_mayhem_spell.ender_wizard_hat": "Ender Horn",
+
+  "item.magic_mayhem_spell.spell_scroll": "Spell Paper",
+
+  "item.magic_mayhem_spell.zap_scroll": "Zap Scroll",
+  "item.magic_mayhem_spell.teleport_scroll": "Teleport Scroll",
+  "item.magic_mayhem_spell.air_draft_scroll": "Air Draft Scroll",
+  "item.magic_mayhem_spell.heal_scroll": "Heal Scroll",
+  "item.magic_mayhem_spell.beam_scroll": "Amethyst Barrage Scroll",
+  "item.magic_mayhem_spell.regenerate_scroll": "Regenerate Scroll",
+  "item.magic_mayhem_spell.arcane_piercer_scroll": "Arcane Piercer Scroll",
+  "item.magic_mayhem_spell.absorbing_shield_scroll": "Absorbing Shield Scroll",
+  "item.magic_mayhem_spell.haste_scroll": "Haste Scroll",
+  "item.magic_mayhem_spell.chromatic_orb_scroll": "Chromatic Orb Scroll",
+  "item.magic_mayhem_spell.magic_missile_scroll": "Magic Missile Scroll",
+  "item.magic_mayhem_spell.magic_armor_scroll": "Magic Armor Scroll",
+  "item.magic_mayhem_spell.magic_shield_scroll": "Magic Shield Scroll",
+  "item.magic_mayhem_spell.occulta_sensus_scroll": "Occulta Sensus",
+  "item.magic_mayhem_spell.heavenly_smite_scroll": "Heavenly Smite Scroll",
+  "item.magic_mayhem_spell.fireball_scroll": "Fireball Scroll",
+  "item.magic_mayhem_spell.meteor_shower_scroll": "Meteor Shower Scroll",
+  "item.magic_mayhem_spell.alchemists_brew_scroll": "Alchemist Brew Scroll",
+  "item.magic_mayhem_spell.weather_forecast_scroll": "Weather Forecast Scroll",
+  "item.magic_mayhem_spell.healing_circle_scroll": "Healing Circle Scroll",
+  "item.magic_mayhem_spell.telekinesis_scroll": "Telekenises Scroll",
+  "item.magic_mayhem_spell.stasis_scroll": "Stasis Scroll",
+  "item.magic_mayhem_spell.levitate_scroll": "Levitate Scroll",
+  "item.magic_mayhem_spell.force_levitate_scroll": "Shulker Burst Scroll",
+  "item.magic_mayhem_spell.overheat_scroll": "Overheat Scroll",
+  "item.magic_mayhem_spell.ice_shards_scroll": "Ice Shard Scroll",
+  "item.magic_mayhem_spell.ray_of_frost_scroll": "Ray of Frost Scroll",
+  "item.magic_mayhem_spell.quick_fix_scroll": "Quick Fix Scroll",
+  "item.magic_mayhem_spell.mending_scroll": "Mending Scroll",
+  "item.magic_mayhem_spell.lightning_charge_scroll": "Discharge Scroll",
+  "item.magic_mayhem_spell.lifesteal_scroll": "Lifesteal Scroll",
+  "item.magic_mayhem_spell.arcane_sigil_scroll": "Arcane Sigil Scroll",
+  "item.magic_mayhem_spell.sculk_blast_scroll": "Sculk Blast Scroll",
+  "item.magic_mayhem_spell.soul_burst_scroll": "Soul Burst Scroll",
+  "item.magic_mayhem_spell.frost_armor_scroll": "Frost Armor Scroll",
+  "item.magic_mayhem_spell.hunger_scroll": "Eldritch Hunger Scroll",
+  "item.magic_mayhem_spell.true_invisibility_scroll": "True Invisibility Scroll",
+  "item.magic_mayhem_spell.cleanse_scroll": "Cleanse Scroll",
+  "item.magic_mayhem_spell.fish_time_scroll": "Fishy Fella Scroll",
+  "item.magic_mayhem_spell.callback_scroll": "Callback Scroll",
+
+  "item.magic_mayhem_spell.copper_limit_break": "Copper Limit Break",
+  "item.magic_mayhem_spell.iron_limit_break": "Iron Limit Break",
+  "item.magic_mayhem_spell.golden_limit_break": "Golden Limit Break",
+  "item.magic_mayhem_spell.diamond_limit_break": "Diamond Limit Break",
+  "item.magic_mayhem_spell.netherite_limit_break": "Netherite Limit Break",
+
+  "block.magic_mayhem_spell.elegant_bookshelf": "Elegant Bookshelf",
+
+  "item.magic_mayhem_spell.mana_potion": "Mana Potion",
+
+  "item.magic_mayhem_spell.container": "Container",
+  "item.magic_mayhem_spell.experience_ingot": "Experience Ingot",
+
+  "gui.magic_mayhem.spell_binder.name": "Spell Binder",
+  "item.magic_mayhem_spell.elegant_bookshelf": "Elegant Bookshelf",
+  "item.magic_mayhem_spell.spell_paper": "Spell Paper"
+}

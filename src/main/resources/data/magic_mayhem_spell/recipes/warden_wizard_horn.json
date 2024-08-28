@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+    "key": {
+      "#": {
+        "item": "minecraft:sculk_vein"
+      },
+      "B": {
+        "item": "minecraft:sculk_sensor"
+      },
+      "P": {
+        "item": "minecraft:goat_horn"
+      }
+    },
+    "pattern": [
+      " # ",
+      "#BP",
+      " # "
+    ],
+  "result": {
+    "item": "magic_mayhem_spell:warden_wizard_horn"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+    "key": {
+      "#": {
+        "item": "minecraft:sculk_catalyst"
+      },
+      "R": {
+        "item": "minecraft:tinted_glass"
+      },
+      "P": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    "pattern": [
+      "PRP",
+      "P#P",
+      "PRP"
+    ],
+  "result": {
+    "item": "magic_mayhem_spell:warden_wizard_soulpack"
+  }
+}

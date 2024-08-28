@@ -1,0 +1,75 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ink": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:ink_sac"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_paper": {
+      "conditions": {
+        "recipe": "minecraft:paper"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ink",
+      "has_paper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "magic_mayhem_spell:absorbing_shield_scroll",
+      "magic_mayhem_spell:air_draft_scroll",
+      "magic_mayhem_spell:alchemists_brew_scroll",
+      "magic_mayhem_spell:arcane_piercer_scroll",
+      "magic_mayhem_spell:arcane_sigil_scroll",
+      "magic_mayhem_spell:beam_scroll",
+      "magic_mayhem_spell:callback_scroll",
+      "magic_mayhem_spell:chromatic_orb_scroll",
+      "magic_mayhem_spell:cleanse_scroll",
+      "magic_mayhem_spell:fireball_scroll",
+      "magic_mayhem_spell:fish_time_scroll",
+      "magic_mayhem_spell:force_levitate_scroll",
+      "magic_mayhem_spell:frost_armor_scroll",
+      "magic_mayhem_spell:haste_scroll",
+      "magic_mayhem_spell:heal_scroll",
+      "magic_mayhem_spell:healing_circle_scroll",
+      "magic_mayhem_spell:heavenly_smite_scroll",
+      "magic_mayhem_spell:hunger_scroll",
+      "magic_mayhem_spell:ice_shards_scroll",
+      "magic_mayhem_spell:levitate_scroll",
+      "magic_mayhem_spell:lifesteal_scroll",
+      "magic_mayhem_spell:lightning_charge_scroll",
+      "magic_mayhem_spell:magic_armor_scroll",
+      "magic_mayhem_spell:magic_missile_scroll",
+      "magic_mayhem_spell:magic_shield_scroll",
+      "magic_mayhem_spell:mending_scroll",
+      "magic_mayhem_spell:mending_scroll_quick",
+      "magic_mayhem_spell:meteor_shower_scroll",
+      "magic_mayhem_spell:occulta_sensus_scroll",
+      "magic_mayhem_spell:overheat_scroll",
+      "magic_mayhem_spell:quick_fix_scroll",
+      "magic_mayhem_spell:quick_fix_scroll_mending",
+      "magic_mayhem_spell:ray_of_frost_scroll",
+      "magic_mayhem_spell:regenerate_scroll",
+      "magic_mayhem_spell:sculk_blast_scroll",
+      "magic_mayhem_spell:soul_burst_scroll",
+      "magic_mayhem_spell:stasis_scroll",
+      "magic_mayhem_spell:telekinesis_scroll",
+      "magic_mayhem_spell:teleport_scroll",
+      "magic_mayhem_spell:true_invisibility_scroll",
+      "magic_mayhem_spell:weather_forecast_scroll",
+      "magic_mayhem_spell:zap_scroll"
+    ]
+  }
+}

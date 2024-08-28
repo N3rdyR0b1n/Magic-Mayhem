@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "magic_mayhem_spell:experience_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "magic_mayhem_spell:copper_limit_break",
+      "magic_mayhem_spell:iron_limit_break",
+      "magic_mayhem_spell:golden_limit_break",
+      "magic_mayhem_spell:diamond_limit_break",
+      "magic_mayhem_spell:netherite_limit_break"
+    ]
+  }
+}

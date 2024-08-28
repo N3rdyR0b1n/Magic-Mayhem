@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_breath": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:dragon_breath"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_breath"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "magic_mayhem_spell:ender_wizard_hat",
+      "magic_mayhem_spell:ender_wizard_tuxedo",
+      "magic_mayhem_spell:ender_wizard_leggings",
+      "magic_mayhem_spell:ender_wizard_boots"
+    ]
+  }
+}

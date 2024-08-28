@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sculk": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:sculk"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_sculk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "magic_mayhem_spell:warden_wizard_horn",
+      "magic_mayhem_spell:warden_wizard_ribcage",
+      "magic_mayhem_spell:warden_wizard_soulpack",
+      "magic_mayhem_spell:warden_wizard_boots"
+    ]
+  }
+}

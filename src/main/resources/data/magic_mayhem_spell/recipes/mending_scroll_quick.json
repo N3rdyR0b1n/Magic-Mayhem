@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "magic_mayhem_spell:quick_fix_scroll"
+    }
+  ],
+  "result": {
+    "item": "magic_mayhem_spell:mending_scroll"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:iron_ingot"
+    },
+    "E": {
+      "item": "magic_mayhem_spell:experience_ingot"
+    }
+  },
+  "pattern": [
+    " C ",
+    "CEC",
+    " C "
+  ],
+  "result": {
+    "item": "magic_mayhem_spell:iron_limit_break"
+  },
+  "show_notification": true
+}

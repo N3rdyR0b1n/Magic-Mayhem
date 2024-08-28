@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "magic_mayhem_spell:simple_spell_book"
+    },
+    "X": {
+      "item": "minecraft:gold_ingot"
+    },
+    "O": {
+      "item": "minecraft:emerald"
+    },
+    "Q": {
+      "item": "minecraft:diamond"
+    },
+    "R": {
+      "item": "minecraft:copper_ingot"
+    },
+    "P": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "D": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "H": {
+      "item": "minecraft:redstone"
+    },
+    "J": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "pattern": [
+    "XJR",
+    "O#P",
+    "QHD"
+  ],
+  "result": {
+    "item": "magic_mayhem_spell:medium_spell_book"
+  },
+  "show_notification": true
+}

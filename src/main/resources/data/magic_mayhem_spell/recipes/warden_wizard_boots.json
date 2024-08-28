@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+    "key": {
+      "#": {
+        "item": "minecraft:sculk_vein"
+      },
+      "R": {
+        "item": "minecraft:iron_block"
+      }
+    },
+    "pattern": [
+      "# #",
+      "# #",
+      "R R"
+    ],
+  "result": {
+    "item": "magic_mayhem_spell:warden_wizard_boots"
+  }
+}

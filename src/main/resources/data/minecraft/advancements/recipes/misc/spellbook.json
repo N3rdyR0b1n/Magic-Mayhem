@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_quillbook": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:writable_book"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_paper": {
+      "conditions": {
+        "recipe": "minecraft:paper"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_quillbook",
+      "has_paper"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "magic_mayhem_spell:simple_spell_book",
+      "magic_mayhem_spell:medium_spell_book",
+      "magic_mayhem_spell:strong_spell_book"
+    ]
+  }
+}

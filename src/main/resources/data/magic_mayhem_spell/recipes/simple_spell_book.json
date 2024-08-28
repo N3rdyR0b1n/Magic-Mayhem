@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:writable_book"
+    },
+    "X": {
+      "item": "minecraft:gold_ingot"
+    },
+    "O": {
+      "item": "minecraft:leather"
+    },
+    "A": {
+      "item": "minecraft:glow_ink_sac"
+    }
+  },
+  "pattern": [
+    "OXA",
+    "X#X",
+    "AXO"
+  ],
+  "result": {
+    "item": "magic_mayhem_spell:simple_spell_book"
+  },
+  "show_notification": true
+}
