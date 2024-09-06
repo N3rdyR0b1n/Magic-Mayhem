@@ -16,6 +16,12 @@
     },
     {
       "item": "minecraft:ice"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:glow_ink_sac"
     }
 
   ],

@@ -55,6 +55,7 @@ public class GravityHelperEntity extends ThrownItemEntity {
                 ItemStack stack = player.getActiveItem();
                 if (target instanceof LivingEntity living && living.isDead()) {
                     ModSpells.GRAVITY_GRAB.onKill(player, this.getWorld(), target);
+                    stop();
                 }
                 NbtCompound compound = stack.getSubNbt(NbtS.getNbt(stack));
                 if (compound.get(NbtS.SPELL) instanceof ContinousUsageSpell usageSpell && usageSpell.id == ModSpells.GRAVITY_GRAB.id && usageSpell.UseTime > 0) {

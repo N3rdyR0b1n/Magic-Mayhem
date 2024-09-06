@@ -17,7 +17,7 @@ public class ModSpells {
 
     public static Spell ZAP = SpellKeeper.RegisterSpell(
             new ElectricalZapSpell(15, SpellSchools.LIGHTNING ,55, 100,
-                    identifierCreator("zap"), 1, 9, 10)
+                    identifierCreator("zap"), 1, 9, 10, 40)
     );
     public static Spell HEAL = SpellKeeper.RegisterSpell(
             new HealingSpell(10, SpellSchools.HOLY,0, "Heal", 200,
@@ -46,7 +46,7 @@ public class ModSpells {
     );
     public static Spell MAGIC_MISSILE = SpellKeeper.RegisterSpell(
             new MagicMissileSpell(30, SpellSchools.ARCANA, 20, "Magic Missile",
-                    200 ,identifierCreator("magic_missile"), 1, 9, 20, 20)
+                    200 ,identifierCreator("magic_missile"), 1, 9, 20, 400)
     );
     public static Spell HEAL_OVER_TIME = SpellKeeper.RegisterSpell(
             new ToggleHealling(85, SpellSchools.HOLY, 0, "Regenerate Health", 200,
@@ -142,7 +142,7 @@ public class ModSpells {
             3600, false, 0, 4, 4, 4, 0, 0
     ));
     public static Spell HUNGER_SPELL = SpellKeeper.RegisterSpell(new HungerSpell(
-            155, SpellSchools.SOUL, 0, "Eldritch Hunger", 3600,
+            155, SpellSchools.SOUL, 0, "Essence Leech", 3600,
             identifierCreator("eldritch_hunger"),
             9600, false, 0, 6, 6, 0, 0
     ));
@@ -171,7 +171,7 @@ public class ModSpells {
 
     public static Spell ELDRITCH_HUNGER = SpellKeeper.RegisterSpell(new
             EldritchHunger(170, SpellSchools.SOUL, 0, "Eldritch Hunger", 1200,
-            identifierCreator("eldritch_hunger"), 200, true, 10,
+            identifierCreator("eldritch-hunger"), 200, true, 10,
             7, 9, 105, 5));
 
     public static Spell WITHER_SKULL = SpellKeeper.RegisterSpell(new

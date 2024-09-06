@@ -52,10 +52,10 @@ public abstract class ContinousUsageSpell extends Spell {
     public ContinousUsageSpell(int manaCost, SpellSchool school, int chargeTime, String name, int cooldown, Identifier texture, int useTime, boolean needsHeld, int overtimecost) {
         this(manaCost, school, chargeTime, name, cooldown, texture, useTime, needsHeld, overtimecost, 0, 0, 0, 0);
         if (overtimecost > 0) {
-            text = ModSpells.formattedBasicSpell(name, manaCost, overtimecost);
+            text = ModSpells.FormatSpell(name, manaCost, overtimecost, level);
         }
         else if (overtimecost == 0) {
-            text = ModSpells.formattedBasicSpell(name, manaCost);
+            text = ModSpells.FormatSpell(name, manaCost, level);
         }
 
     }

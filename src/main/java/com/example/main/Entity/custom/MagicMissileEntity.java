@@ -3,7 +3,6 @@ package com.example.main.Entity.custom;
 import com.example.main.Entity.ModEntities;
 import com.example.main.SpellUtil.DamageTypes.ModDamageTypes;
 import com.example.main.Spells.ModSpells;
-import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -93,8 +92,7 @@ public class MagicMissileEntity extends PersistentProjectileEntity {
                 }
             }
             ModSpells.MAGIC_MISSILE.onHit(owner, this.getWorld(), entity, 1f);
-            entity.damage(entity.getDamageSources().playerAttack((PlayerEntity) this.getOwner()), 0.00001f);
-            entity.damage(ModDamageTypes.of(this.getWorld(), ModDamageTypes.MAGIC_TICK), 6);
+            entity.damage(ModDamageTypes.of(this.getWorld(), ModDamageTypes.MAGIC_TICK, owner), 6);
             if (!entity.isAlive()) {
                 ModSpells.MAGIC_MISSILE.onKill(owner, this.getWorld(), entity);
             }

@@ -18,6 +18,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
+import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -51,7 +52,6 @@ public abstract class PlayerMagicMixin implements ManaContainer {
     private NbtCompound persistantSaveData;
     private boolean[] nbtdirty;
     private Multimap<EntityAttribute, EntityAttributeModifier>[] oldmodifiers;
-
 
 
     @Override

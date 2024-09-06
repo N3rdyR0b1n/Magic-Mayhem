@@ -14,7 +14,7 @@ public class ToggleHealling extends ContinousUsageSpell {
     private ActionPerformable heal = new TickHeal(1);
     public ToggleHealling(int manaCost, SpellSchool school, int chargeTime, String name, int cooldown, Identifier texture, int useTime, boolean needsHeld, int overtimecost, int min, int max, int up, int uptime) {
         super(manaCost, school, chargeTime, name, cooldown, texture, useTime, needsHeld, overtimecost, min, max, up,uptime);
-        text = ModSpells.formattedBasicSpell(name, manaCost);
+        text = ModSpells.FormatSpell(name, manaCost,level);
     }
 
     @Override

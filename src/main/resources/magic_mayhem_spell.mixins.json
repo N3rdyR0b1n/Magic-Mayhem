@@ -8,9 +8,10 @@
     "ExampleMixin",
     "MagicItemMixin",
     "NbtTypeMixin",
+    "PersistentRespawnData",
     "PlayerMagicMixin",
-    "ThrowMixin",
-    "PersistentRespawnData"
+    "ServerPlayerMixin",
+    "ThrowMixin"
   ],
   "client": [
     "ClientLMBMixin",

@@ -45,7 +45,7 @@ public class AlchemistsBrew extends Spell {
 
     @Override
     public String getInfo(PlayerEntity player, ItemStack stack) {
-        return ModSpells.formattedBasicSpell(name, calculatemanacost(player, stack).cost);
+        return ModSpells.FormatSpell(name, calculatemanacost(player, stack).cost, level);
     }
     private record ManaCostVariable(ItemStack fuel, int cost) {}
 

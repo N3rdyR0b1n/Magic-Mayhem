@@ -49,12 +49,13 @@ public class ForceLevitate extends Spell {
                 protected void onEntityHit(EntityHitResult entityHitResult) {
                 Entity entity = entityHitResult.getEntity();
                 Entity entity2 = this.getOwner();
+                World world = this.getWorld();
                 LivingEntity livingEntity = entity2 instanceof LivingEntity ? (LivingEntity)entity2 : null;
                 ModSpells.FORCE_LEVITATE.onHit(((PlayerEntity) this.getOwner()), this.getWorld(), entity, 1);
+                boolean bl = false;
                 if (entity2 instanceof PlayerEntity playerentity) {
-                    entity.damage(entity.getDamageSources().playerAttack(playerentity), 0.0001f);
+                    bl = entity.damage(ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK, playerentity), 6);
                 }
-                boolean bl = entity.damage(ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK), 6);
 
                 if (entity instanceof LivingEntity living && living.isDead()) {
                     ModSpells.FORCE_LEVITATE.onKill((PlayerEntity) this.getOwner(), world, living);

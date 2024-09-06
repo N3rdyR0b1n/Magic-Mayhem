@@ -1,11 +1,11 @@
 package com.example.main.Spells.custom;
 
 import com.example.main.Entity.custom.MagicMissileEntity;
-import com.example.main.SpellUtil.*;
+import com.example.main.SpellUtil.GenericSpellAbilities;
+import com.example.main.SpellUtil.SpellSchool;
 import com.example.main.SpellUtil.Spells.NbtS;
 import com.example.main.SpellUtil.Spells.Spell;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
-import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,11 +32,8 @@ public class MagicMissileSpell extends Spell {
 
     @Override
     public void castReleaseSpell(PlayerEntity player, World world, ItemStack stack, int tick) {
-        Entity entity = GenericSpellAbilities.HitscanSelect(world, player, 128,true).getTarget();
+        Entity entity = GenericSpellAbilities.MarkHitscanSelect(world, player, NbtS.SpellNbt(stack),128,true).getTarget();
         if (entity != null) {
-            NbtCompound compound = stack.getSubNbt(NbtS.getNbt(stack));
-            compound.putBoolean("Hit", true);
-
             world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH, SoundCategory.PLAYERS, 1, 0.95f);
             world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH, SoundCategory.PLAYERS, 1, 1);
             world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH, SoundCategory.PLAYERS, 1, 1.05f);
@@ -65,15 +62,15 @@ public class MagicMissileSpell extends Spell {
 
     @Override
     public void applyFinishCost(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
-        if (nbt.getBoolean("Hit")) {
+        if (GenericSpellAbilities.HasTarget(nbt)) {
             super.applyFinishCost(player, stack, nbt, slot);
         }
     }
     @Override
     public void applyCooldown(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
-        if (nbt.getBoolean("Hit")) {
+        if (GenericSpellAbilities.HasTarget(nbt)) {
             super.applyCooldown(player, stack, nbt, slot);
-            nbt.putBoolean("Hit", false);
+            GenericSpellAbilities.ClearTarget(nbt);
         }
     }
     private void shoot(World world, LivingEntity shooter, Entity projectile, float speed, float simulated) {
@@ -88,10 +85,11 @@ public class MagicMissileSpell extends Spell {
         }
     }
     public void castSecSpell(PlayerEntity player, World world, ItemStack stack) {
-        Entity entity = GenericSpellAbilities.HitscanSelect(world, player, 128,true).getTarget();
+        if (world.isClient()) {
+            return;
+        }
+        Entity entity = GenericSpellAbilities.MarkHitscanSelect(world, player,  NbtS.SpellNbt(stack),128,true).getTarget();
         if (entity != null) {
-            NbtCompound compound = stack.getSubNbt(NbtS.getNbt(stack));
-            compound.putBoolean("Hit", true);
             int level = Level() + 3;
             world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH, SoundCategory.PLAYERS, 1, 0.95f);
             world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH, SoundCategory.PLAYERS, 1, 1);
@@ -105,13 +103,16 @@ public class MagicMissileSpell extends Spell {
         }
     }
     public void applySecCost(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
-        if (nbt.getBoolean("Hit")) {
+        if (GenericSpellAbilities.HasTarget(nbt)) {
             super.applySecCost(player, stack, nbt, slot);
         }
     }
     @Override
     public void applySecCooldown(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
-        seccooldownprogress = seccooldown;
+        if (GenericSpellAbilities.HasTarget(nbt)) {
+            seccooldownprogress = seccooldown;
+            GenericSpellAbilities.ClearTarget(nbt);
+        }
     }
 
     public int getCooldownProgress(PlayerEntity player, ItemStack stack) {

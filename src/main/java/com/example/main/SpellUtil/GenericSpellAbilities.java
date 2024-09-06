@@ -61,7 +61,19 @@ public class GenericSpellAbilities {
             stack.addEnchantment(Enchantments.EFFICIENCY, 1);
         }
     }
-
+    public static HitValues MarkHitscanSelect(World world, PlayerEntity player, NbtCompound nbtCompound, float range, boolean ignoreblocks) {
+        HitValues values = HitscanSelect(world, player, range, ignoreblocks);
+        if (values.getTarget() != null) {
+            nbtCompound.putBoolean("Hit", true);
+        }
+        return values;
+    }
+    public static boolean HasTarget(NbtCompound nbtCompound) {
+        return nbtCompound.getBoolean("Hit");
+    }
+    public static void ClearTarget(NbtCompound nbtCompound) {
+        nbtCompound.putBoolean("Hit", false);
+    }
     public static HitValues HitscanSelect(World world, PlayerEntity player , float range, boolean ignoreblocks) {
         Vec3d start = player.getEyePos();
         Vec3d end = player.getEyePos().add(player.getRotationVec(0.5F).multiply(range));
@@ -91,13 +103,10 @@ public class GenericSpellAbilities {
             end = hitResult.getPos();
         }
         List<Entity> targets = new ArrayList<>();
-        Vec3d direction = end.subtract(start).normalize();
-        BlockHitResult blockhit = world.raycast(new RaycastContext(start, end, RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.ANY, player));
-        Box box = new Box(start.subtract(-1f, -1f, -1f), start.add(1f, 1f, 1f)).stretch(direction.multiply(range)).expand(1.0, 1.0, 1.0);
-        EntityHitResult lastEntityhit = null;
+        Box box = new Box(start.subtract(-1f, -1f, -1f), start.add(1f, 1f, 1f)).stretch(end.subtract(start)).expand(1.0, 1.0, 1.0);
         boolean piercingqualifier = true;
         while (piercingqualifier) {
-            EntityHitResult entityhit = ProjectileUtil.raycast(player, start, end, box, (entity) -> (!targets.contains(entity)) && (entity.isAttackable()), range * range);
+            EntityHitResult entityhit = ProjectileUtil.raycast(player, start, end, box, (entity) -> (!targets.contains(entity)) && (entity.isAttackable()) && (entity.isAlive()), range * range);
             if (entityhit == null) {
                 break;
             }
@@ -113,14 +122,11 @@ public class GenericSpellAbilities {
         }
         for (int i = 0; i < targets.size(); i++) {
             Entity entity = targets.get(i);
-            if (entity.isAlive()) {
-                if (entity instanceof LivingEntity) {
-                    entity.damage(entity.getDamageSources().playerAttack(player), 0.01f);
-                    entity.damage(ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK), damage);
-                    spell.onHit(player, world, entity, 1f);
-                    if (((LivingEntity) entity).isDead()) {
-                        spell.onKill(player, world, entity);
-                    }
+            if (entity instanceof LivingEntity) {
+                entity.damage(ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK, player), damage);
+                spell.onHit(player, world, entity, 1f);
+                if (((LivingEntity) entity).isDead()) {
+                    spell.onKill(player, world, entity);
                 }
             }
         }
@@ -262,7 +268,6 @@ public class GenericSpellAbilities {
                 double w = Math.sqrt(livingEntity.squaredDistanceTo(vec3d)) / (area * area);
                 double ab = getExposure(vec3d, livingEntity);
                 double ac = (1.0 - w) * ab;
-                livingEntity.damage(livingEntity.getDamageSources().playerAttack(player), 0.0001f);
                 if (bl) {
                     spell.onHit(player, world,livingEntity, hitscaling);
                     livingEntity.damage(source, damage);
@@ -287,7 +292,7 @@ public class GenericSpellAbilities {
         return returnlist;
     }
     public static List<LivingEntity> explodeFlatAoe (float damage, float knockbackmultiplier, float areamultiplier, World world, Entity shooter, PlayerEntity player, Spell spell, float hitscaling, float weakerhitscaling) {
-        return explodeFlatAoe(damage, knockbackmultiplier, areamultiplier, world, shooter, player, spell, hitscaling, weakerhitscaling, ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK));
+        return explodeFlatAoe(damage, knockbackmultiplier, areamultiplier, world, shooter, player, spell, hitscaling, weakerhitscaling, ModDamageTypes.of(world, ModDamageTypes.MAGIC_TICK, player));
     }
     public static boolean InvisibleArmor(Entity entity, int invis) {
         if (entity instanceof PlayerEntity player) {

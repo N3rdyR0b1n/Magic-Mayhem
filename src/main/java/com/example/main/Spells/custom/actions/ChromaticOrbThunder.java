@@ -24,7 +24,7 @@ public class ChromaticOrbThunder extends ActionPerformable {
                         if (entityHitResult.getEntity() instanceof LivingEntity target) {
                             ModSpells.CHROMATIC_ORB.onHit(owner, this.getWorld(), target, 1);
                             target.damage(target.getDamageSources().playerAttack(owner), 0.01f);
-                            target.damage(target.getDamageSources().cramming(), 22.5f);
+                            target.damage(target.getDamageSources().cramming(), 15f);
                             if (target.isDead()) {
                                 ModSpells.CHROMATIC_ORB.onKill(owner, this.getWorld(), target);
                             }

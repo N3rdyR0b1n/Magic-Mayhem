@@ -1,6 +1,5 @@
 package com.example.main.Spells.custom;
 
-import com.example.main.Attributes.ModAttributes;
 import com.example.main.ModS2CMessages.ModPacketChannels;
 import com.example.main.SpellUtil.DamageTypes.ModDamageTypes;
 import com.example.main.SpellUtil.GenericSpellAbilities;
@@ -22,7 +21,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -52,7 +50,7 @@ public class EldritchHunger extends ContinousUsageSpell {
                         living.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 6, 0, true, false), player);
                     }
                     entity.damage(entity.getDamageSources().playerAttack(player), 0.00001f);
-                    entity.damage(entity.getDamageSources().create(ModDamageTypes.MAGIC_TICK), 2);
+                    entity.damage(entity.getDamageSources().create(ModDamageTypes.MAGIC_TICK, player), 2);
                     onHit(player, world, entity, 0.25f);
                     if (!entity.isAlive()) {
                         onKill(player, world, entity);
@@ -60,6 +58,8 @@ public class EldritchHunger extends ContinousUsageSpell {
                         continue;
                     }
                     entity.addVelocity(epos);
+                    entity.velocityDirty = true;
+                    entity.velocityModified = true;
                 }
             }
             double x = player.getX();

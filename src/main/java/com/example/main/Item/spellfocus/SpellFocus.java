@@ -167,12 +167,12 @@ public class SpellFocus extends Item implements LeftMouseItem, AttributeModifier
             String slot = NbtS.SLOT + i;
             NbtCompound compound = stack.getSubNbt(slot);
             if (compound != null && compound.get(NbtS.SPELL) instanceof ContinousUsageSpell continousUsageSpell && continousUsageSpell.needsHeld && continousUsageSpell.UseTime >= 0) {
-                if (continousUsageSpell.canCastTickSpell(player, world, stack)) {
+                if (continousUsageSpell.canCastTickSpell(player, world, stack) && player.isAlive()) {
                     int tick = continousUsageSpell.UseTime;
                     continousUsageSpell.tickAction(player, world, stack, i, tick);
                     continousUsageSpell.applyTickCost(player, stack, compound, i, tick);
                 } else {
-                           if (continousUsageSpell.canEnd(player, stack, compound)) {
+                    if (continousUsageSpell.canEnd(player, stack, compound)) {
                         continousUsageSpell.endAction(player, world, stack);
                     }
                     continousUsageSpell.applyCooldown(player, stack,  stack.getSubNbt(slot),i);
@@ -186,6 +186,9 @@ public class SpellFocus extends Item implements LeftMouseItem, AttributeModifier
             return;
         }
         if (entity instanceof PlayerEntity player) {
+            if (!player.isAlive()) {
+                DeathClear(player,world,stack);
+            }
             byte castlvl = (byte) player.getAttributeValue(ModAttributes.CASTING_LEVEL);
             boolean update = false;
             for (int i = 0; i < spellPages; i++) {
@@ -285,7 +288,9 @@ public class SpellFocus extends Item implements LeftMouseItem, AttributeModifier
                 spell.applySecCooldown(player, stack, nbt, index);
             }
         }
-        stack.getNbt().putByte(NbtS.SYNC, (byte) (stack.getNbt().getByte(NbtS.SYNC) + 1));
+        if (!world.isClient()) {
+            stack.getNbt().putByte(NbtS.SYNC, (byte) (stack.getNbt().getByte(NbtS.SYNC) + 1));
+        }
     }
     private void onLmbHold(PlayerEntity player, ItemStack stack, World world) {
         if (!stack.hasNbt()) {
@@ -305,9 +310,30 @@ public class SpellFocus extends Item implements LeftMouseItem, AttributeModifier
                 usageSpell.applySecCooldown(player, stack, compound, i);
             }
         }
+        if (!world.isClient()) {
+            stack.getNbt().putByte(NbtS.SYNC, (byte) (stack.getNbt().getByte(NbtS.SYNC) + 1));
+        }
     }
 
+    private void DeathClear(PlayerEntity player, World world, ItemStack stack) {
+        for (int i = 0; i < spellPages; i++) {
+            String index = NbtS.SLOT + i;
+            NbtCompound compound = stack.getSubNbt(index);
+            if (compound == null) {
+                continue;
+            }
+            if (compound.get(NbtS.SPELL) instanceof Spell spell) {
+                if (spell instanceof ContinousUsageSpell continousUsageSpell && continousUsageSpell.UseTime >= 0) {
+                    if (continousUsageSpell.canEnd(player, stack, compound)) {
+                        continousUsageSpell.endAction(player, world, stack);
+                    }
+                    spell.applyCooldown(player, stack, compound, i);
+                }
+            }
+        }
+        stack.getNbt().putInt(NbtS.SYNC, stack.getNbt().getInt(NbtS.SYNC) + 1);
 
+    }
 
     public void Initialise(ItemStack stack) {
         NbtCompound compound = new NbtCompound();

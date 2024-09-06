@@ -24,10 +24,13 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class ElectricalZapSpell extends Spell {
-    public ElectricalZapSpell(int manaCost, SpellSchool school, int chargeTime, int cooldown, Identifier texture, int min, int max, int up) {
+    private int seccooldown;
+    private int seccooldownprogress = 0;
+    public ElectricalZapSpell(int manaCost, SpellSchool school, int chargeTime, int cooldown, Identifier texture, int min, int max, int up, int seccooldown) {
         super(0, school, chargeTime, "Zap", cooldown, texture, min, max, up);
         super.finishManaCost = manaCost;
         super.text = GetText();
+        this.seccooldown = seccooldown;
     }
 
     @Override
@@ -53,9 +56,19 @@ public class ElectricalZapSpell extends Spell {
         player.addVelocity(player.getRotationVec(0.5F).multiply(-0.2f - damage / 10f - (float) Level() /10));
     }
 
+    public void castSecSpell(PlayerEntity player, World world, ItemStack stack) {
+        world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS, 0.75f, 1.5f);
+
+        HitValues values = GenericSpellAbilities.HitscanAttack(player, world, 24, 8, 8, true, this, stack);
+        GenericSpellAbilities.addParticles(world, player.getEyePos().subtract(0, 0.25f, 0), values.endPos(), ParticleTypes.ELECTRIC_SPARK, 1);
+        if (values.hasHit() || (world.raycast(new RaycastContext(player.getEyePos(), player.getEyePos().add(player.getRotationVec(0.5F).multiply(8)), RaycastContext.ShapeType.COLLIDER, RaycastContext.FluidHandling.NONE, player)).getType() == HitResult.Type.BLOCK)) {
+            world.playSound(null, player.getBlockPos(), SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.PLAYERS, 1, 2f);
+        }
+    }
+
     @Override
     public boolean canCastFinishSpell(PlayerEntity player, World world, ItemStack stack, NbtCompound nbt, int tick) {
-        return CooldownProgress <= 0 && ((ManaContainer) player).getMana().getStoredMana() >= FinManacost();
+        return getCooldownProgress(player,stack) <= 0 && ((ManaContainer) player).getMana().getStoredMana() >= FinManacost();
     }
 
     @Override
@@ -70,5 +83,49 @@ public class ElectricalZapSpell extends Spell {
         target.velocityDirty = true;
         super.onHit(player,world,target,hitlvl);
     }
+    @Override
+    public void applySecCooldown(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
+        if (!player.getWorld().isClient()) {
+            seccooldownprogress = seccooldown;
+        }
+    }
 
+    public int getCooldownProgress(PlayerEntity player, ItemStack stack) {
+        if (CooldownProgress != 0) {
+            return CooldownProgress;
+        }
+        else {
+            return seccooldownprogress;
+        }
+    }
+
+    public int getCooldown(PlayerEntity player, ItemStack stack) {
+        if (CooldownProgress != 0) {
+            return SpellCooldown;
+        }
+        else {
+            return seccooldown;
+        }
+    }
+
+    public boolean UpdateCooldown(PlayerEntity player, World world, ItemStack stack, NbtCompound compound) {
+        if (!world.isClient()) {
+            if (seccooldownprogress > 0) {
+                seccooldownprogress--;
+                return super.UpdateCooldown(player,world,stack,compound);
+            }
+            return super.UpdateCooldown(player,world,stack,compound);
+        }
+        return false;
+    }
+
+    public boolean canSecCastSpell(PlayerEntity player, World world, ItemStack stack,NbtCompound nbt) {
+        return getCooldownProgress(player,stack) <= 0;
+    }
+
+    public void applySecCost(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
+        if (GenericSpellAbilities.HasTarget(nbt)) {
+            super.applySecCost(player, stack, nbt, slot);
+        }
+    }
 }

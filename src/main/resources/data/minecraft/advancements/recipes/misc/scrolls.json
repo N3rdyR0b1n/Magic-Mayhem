@@ -37,6 +37,7 @@
       "magic_mayhem_spell:callback_scroll",
       "magic_mayhem_spell:chromatic_orb_scroll",
       "magic_mayhem_spell:cleanse_scroll",
+      "magic_mayhem_spell:eldritch_hunger_scroll",
       "magic_mayhem_spell:fireball_scroll",
       "magic_mayhem_spell:fish_time_scroll",
       "magic_mayhem_spell:force_levitate_scroll",
@@ -47,6 +48,7 @@
       "magic_mayhem_spell:heavenly_smite_scroll",
       "magic_mayhem_spell:hunger_scroll",
       "magic_mayhem_spell:ice_shards_scroll",
+      "magic_mayhem_spell:ice_skate_scroll",
       "magic_mayhem_spell:levitate_scroll",
       "magic_mayhem_spell:lifesteal_scroll",
       "magic_mayhem_spell:lightning_charge_scroll",
@@ -69,6 +71,7 @@
       "magic_mayhem_spell:teleport_scroll",
       "magic_mayhem_spell:true_invisibility_scroll",
       "magic_mayhem_spell:weather_forecast_scroll",
+      "magic_mayhem_spell:wither_skull_scroll",
       "magic_mayhem_spell:zap_scroll"
     ]
   }
