@@ -343,7 +343,7 @@ public abstract class Spell extends Action implements Cloneable, Serializable, N
 
     public boolean Upcast(PlayerEntity player) {
         level++;
-        if (level > maxlevel) {
+        if (level > maxlevel || level < minlevel) {
             level = maxlevel;
             return false;
         }

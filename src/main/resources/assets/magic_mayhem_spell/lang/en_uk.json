@@ -1,6 +1,5 @@
 {
 
-
   "item.modifiers.spell.inventory": "When in Inventory",
 
   "attribute.name.magic_mayhem.maximum_mana": "Maximum Mana",
@@ -26,7 +25,6 @@
   "item.magic_mayhem_spell.medium_spell_book": "Steel Spellbook",
   "item.magic_mayhem_spell.strong_spell_book": "Ender Spellbook",
 
-
   "item.magic_mayhem_spell.perfected_containing_wizard_boots": "Classical Boots",
   "item.magic_mayhem_spell.perfected_containing_wizard_skirt": "Classical Skirt",
   "item.magic_mayhem_spell.perfected_containing_wizard_robe": "Classical Robes",
@@ -38,9 +36,9 @@
   "item.magic_mayhem_spell.warden_wizard_horn": "Sculk Horn",
 
   "item.magic_mayhem_spell.ender_wizard_boots": "Ender Boots",
-  "item.magic_mayhem_spell.ender_wizard_leggings": "Ender Soulpack",
-  "item.magic_mayhem_spell.ender_wizard_tuxedo": "Ender Ribcage",
-  "item.magic_mayhem_spell.ender_wizard_hat": "Ender Horn",
+  "item.magic_mayhem_spell.ender_wizard_leggings": "Ender Leggings",
+  "item.magic_mayhem_spell.ender_wizard_tuxedo": "Ender Tuxedo",
+  "item.magic_mayhem_spell.ender_wizard_hat": "Ender Hat",
 
   "item.magic_mayhem_spell.spell_scroll": "Spell Paper",
 
@@ -82,10 +80,10 @@
   "item.magic_mayhem_spell.hunger_scroll": "Essence Leech Scroll",
   "item.magic_mayhem_spell.true_invisibility_scroll": "True Invisibility Scroll",
   "item.magic_mayhem_spell.cleanse_scroll": "Cleanse Scroll",
-  "item.magic_mayhem_spell.fish_time_scroll": "Aquatic Individual Scroll",
+  "item.magic_mayhem_spell.fish_time_scroll": "Fishy Fella Scroll",
   "item.magic_mayhem_spell.callback_scroll": "Callback Scroll",
   "item.magic_mayhem_spell.ice_skate_scroll": "Ice Skates Scroll",
-  "item.magic_mayhem_spell.wither_skull_scroll": "Callback Scroll",
+  "item.magic_mayhem_spell.wither_skull_scroll": "Wither Skull Scroll",
   "item.magic_mayhem_spell.eldritch_hunger_scroll": "Eldritch Hunger Scroll",
 
   "item.magic_mayhem_spell.copper_limit_break": "Copper Limit Break",
@@ -96,11 +94,10 @@
 
   "block.magic_mayhem_spell.elegant_bookshelf": "Elegant Bookshelf",
 
+  "item.magic_mayhem_spell.mana_potion": "Mana Potion",
 
   "item.magic_mayhem_spell.container": "Container",
   "item.magic_mayhem_spell.experience_ingot": "Experience Ingot",
-
-  "item.magic_mayhem_spell.mana_potion": "Mana Potion",
 
   "gui.magic_mayhem.spell_binder.name": "Spell Binder",
   "item.magic_mayhem_spell.elegant_bookshelf": "Elegant Bookshelf",

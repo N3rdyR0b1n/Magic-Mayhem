@@ -25,6 +25,9 @@ public class UpcastSync {
         else {
             stack = player.getOffHandStack();
         }
+        if (!(stack.getItem() instanceof SpellFocus)) {
+            return;
+        }
         NbtCompound compound = stack.getSubNbt(NbtS.getNbt(stack));
         if (compound != null && compound.get(NbtS.SPELL) instanceof Spell spell) {
             if (up) {
