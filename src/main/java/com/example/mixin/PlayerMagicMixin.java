@@ -4,6 +4,7 @@ package com.example.mixin;
 import com.example.N3rdyR0b1nsSpellEngine;
 import com.example.main.Attributes.ModAttributes;
 import com.example.main.SpellUtil.AttributeModifierAbleItem;
+import com.example.main.SpellUtil.DodgeContainer;
 import com.example.main.SpellUtil.Mana;
 import com.example.main.SpellUtil.ManaContainer;
 import com.google.common.collect.Multimap;
@@ -33,7 +34,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.*;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerMagicMixin implements ManaContainer {
+public abstract class PlayerMagicMixin implements ManaContainer, DodgeContainer {
 
     @Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
 
@@ -41,17 +42,12 @@ public abstract class PlayerMagicMixin implements ManaContainer {
 
     @Shadow @Final private PlayerInventory inventory;
 
-    @Shadow protected abstract void playStepSound(BlockPos pos, BlockState state);
-
-    @Shadow public abstract boolean canPlaceOn(BlockPos pos, Direction facing, ItemStack stack);
-
-    @Shadow public abstract boolean shouldFilterText();
-
     private List<int[]> spells = new ArrayList<>();
     private Mana playerMana;
     private NbtCompound persistantSaveData;
     private boolean[] nbtdirty;
     private Multimap<EntityAttribute, EntityAttributeModifier>[] oldmodifiers;
+
 
 
     @Override
@@ -93,7 +89,7 @@ public abstract class PlayerMagicMixin implements ManaContainer {
 
     @Inject(method = "createPlayerAttributes", at = @At(value = "RETURN"))
     private static void addCustomAttribute(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-        cir.getReturnValue().add(ModAttributes.MAXIMUM_MANA).add(ModAttributes.MANA_REGENERATION).add(ModAttributes.MANA_LOSS_MULTIPLIER).add(ModAttributes.PASSIVE_MANA_REGENERATION).add(ModAttributes.MANA_ON_HIT).add(ModAttributes.MANA_ON_KILL).add(ModAttributes.HP_ON_KILL).add(ModAttributes.HP_ON_HIT).add(ModAttributes.CAST_SPEED).add(ModAttributes.LIFESTEAL).add(ModAttributes.TRUE_INVISIBILITY).add(ModAttributes.CASTING_LEVEL);
+        cir.getReturnValue().add(ModAttributes.MAXIMUM_MANA).add(ModAttributes.MANA_REGENERATION).add(ModAttributes.MANA_LOSS_MULTIPLIER).add(ModAttributes.PASSIVE_MANA_REGENERATION).add(ModAttributes.MANA_ON_HIT).add(ModAttributes.MANA_ON_KILL).add(ModAttributes.HP_ON_KILL).add(ModAttributes.HP_ON_HIT).add(ModAttributes.CAST_SPEED).add(ModAttributes.LIFESTEAL).add(ModAttributes.TRUE_INVISIBILITY).add(ModAttributes.CASTING_LEVEL).add(ModAttributes.DAMAGE_REDUCTION);
     }
     @Inject(method = "tick", at = @At(value = "HEAD"))
     private void injecttick(CallbackInfo cir) {
@@ -149,5 +145,10 @@ public abstract class PlayerMagicMixin implements ManaContainer {
         nbtdirty = new boolean[inventory.size()];
         oldmodifiers = new Multimap[inventory.size()];
     }
-
+    public int getDodges() {
+        return persistantSaveData.getInt("Dodges");
+    }
+    public void setDodges(int amount) {
+        persistantSaveData.putInt("Dodges", amount);
+    }
 }

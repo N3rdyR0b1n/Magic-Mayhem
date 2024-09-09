@@ -2,6 +2,7 @@ package com.example.main.Spells.custom;
 
 import com.example.main.Entity.custom.MagicMissileEntity;
 import com.example.main.SpellUtil.GenericSpellAbilities;
+import com.example.main.SpellUtil.ManaContainer;
 import com.example.main.SpellUtil.SpellSchool;
 import com.example.main.SpellUtil.Spells.NbtS;
 import com.example.main.SpellUtil.Spells.Spell;
@@ -22,12 +23,16 @@ import org.joml.Vector3f;
 public class MagicMissileSpell extends Spell {
     private int seccooldown;
     private int seccooldownprogress = 0;
+    private int seccost;
+    private int secupcost;
 
-    public MagicMissileSpell(int manaCost, SpellSchool school, int chargeTime, String name, int cooldown, Identifier texture, int min, int max, int cost, int seccooldown) {
+    public MagicMissileSpell(int manaCost, SpellSchool school, int chargeTime, String name, int cooldown, Identifier texture, int min, int max, int cost, int seccooldown, int seccost, int secupcost) {
         super(0, school, chargeTime, name, cooldown, texture, min, max, cost);
         super.finishManaCost = manaCost;
         super.text = GetText();
         this.seccooldown = seccooldown;
+        this.seccost = seccost;
+        this.secupcost = secupcost;
     }
 
     @Override
@@ -102,11 +107,7 @@ public class MagicMissileSpell extends Spell {
             }
         }
     }
-    public void applySecCost(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
-        if (GenericSpellAbilities.HasTarget(nbt)) {
-            super.applySecCost(player, stack, nbt, slot);
-        }
-    }
+
     @Override
     public void applySecCooldown(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
         if (GenericSpellAbilities.HasTarget(nbt)) {
@@ -146,7 +147,17 @@ public class MagicMissileSpell extends Spell {
     }
 
     public boolean canSecCastSpell(PlayerEntity player, World world, ItemStack stack,NbtCompound nbt) {
-        return getCooldownProgress(player,stack) <= 0;
+        return getCooldownProgress(player,stack) <= 0 && ((ManaContainer)player).getMana().getStoredMana() >= SecManaCost();
+    }
+    @Override
+    public void applySecCost(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
+        ((ManaContainer)player).getMana().removeMana(SecManaCost());
+    }
+    private int SecManaCost() {
+        return secupcost * Level() + seccost;
+    }
+    public String getExtraInfo(ItemStack stack) {
+        return "Alt - Mana: " + SecManaCost();
     }
 }
 

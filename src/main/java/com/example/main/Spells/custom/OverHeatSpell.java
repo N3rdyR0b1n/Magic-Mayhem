@@ -14,15 +14,19 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class OverHeatSpell extends ContinousUsageSpell {
-    private String id = N3rdyR0b1nsSpellEngine.MOD_ID+name;
+    private static String id(String name) {
+        return N3rdyR0b1nsSpellEngine.MOD_ID + name;
+    }
     public OverHeatSpell(int manaCost, SpellSchool school, int chargeTime, String name, int cooldown, Identifier texture, int useTime, boolean needsHeld, int overtimecost, int min, int max, int upc, int upt) {
         super(manaCost, school, chargeTime, name, cooldown, texture, useTime, needsHeld, overtimecost, min, max, upc, upt);
+
     }
 
     @Override
     public void castSpell(PlayerEntity player, World world, ItemStack stack) {
         if (!world.isClient) {
             super.castSpell(player, world, stack);
+            String id = id(name);
             stack.addAttributeModifier(ModAttributes.HP_ON_KILL,
                     new EntityAttributeModifier(id, 10f, EntityAttributeModifier.Operation.ADDITION),
                     EquipmentSlot.FEET);
@@ -48,6 +52,7 @@ public class OverHeatSpell extends ContinousUsageSpell {
     public void endAction(PlayerEntity player ,World world, ItemStack stack) {
         if (!world.isClient) {
             player.getAttributes().removeModifiers(stack.getAttributeModifiers(EquipmentSlot.FEET));
+            String id = id(name);
             GenericSpellAbilities.removeAttributeModifier(stack, id);
             GenericSpellAbilities.removeAttributeModifier(stack, id);
             GenericSpellAbilities.removeAttributeModifier(stack, id);

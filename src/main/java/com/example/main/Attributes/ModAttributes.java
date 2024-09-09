@@ -20,7 +20,7 @@ public class ModAttributes {
     public static final EntityAttribute CAST_SPEED = register("magic_mayhem.casting_speed", (new ClampedEntityAttribute("attribute.name.magic_mayhem.casting_speed", 1.0, 0.00001, 16777216.0)).setTracked(true));
     public static final EntityAttribute TRUE_INVISIBILITY = register("magic_mayhem.invisibility", (new ClampedEntityAttribute("attribute.name.magic_mayhem.invisibility", -1, -1, 11)).setTracked(true));
     public static final EntityAttribute CASTING_LEVEL = register("magic_mayhem.casting_level", (new ClampedEntityAttribute("attribute.name.magic_mayhem.casting_level", 0, -1, 256)).setTracked(true));
-
+    public static final EntityAttribute DAMAGE_REDUCTION = register("magic_mayhem.damage_reduction", new ClampedEntityAttribute("attribute.name.magic_mayhem.damage_reduction", 0, -100000, 100000)).setTracked(true);
 
     private static EntityAttribute register(String id, EntityAttribute attribute) {
         return Registry.register(Registries.ATTRIBUTE, id, attribute);

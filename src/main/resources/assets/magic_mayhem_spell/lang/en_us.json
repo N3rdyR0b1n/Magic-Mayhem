@@ -8,6 +8,7 @@
   "attribute.name.magic_mayhem.mana_loss": "Mana Loss",
   "attribute.name.magic_mayhem.mana_kill": "Mana on Kill",
   "attribute.name.magic_mayhem.mana_hit": "Mana on Hit",
+  "attribute.name.magic_mayhem.damage_reduction": "Damage Reduction",
 
   "attribute.name.magic_mayhem.health_kill": "Health on Kill",
   "attribute.name.magic_mayhem.health_hit": "Health on Hit",

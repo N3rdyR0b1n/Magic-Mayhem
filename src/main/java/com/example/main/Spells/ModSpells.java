@@ -19,7 +19,7 @@ public class ModSpells {
 
     public static Spell ZAP = SpellKeeper.RegisterSpell(
             new ElectricalZapSpell(15, SpellSchools.LIGHTNING ,55, 100,
-                    identifierCreator("zap"), 1, MAX_LEVEL, 10, 40)
+                    identifierCreator("zap"), 1, MAX_LEVEL, 10, 40, 10, 5)
     );
     public static Spell HEAL = SpellKeeper.RegisterSpell(
             new HealingSpell(10, SpellSchools.HOLY,0, "Heal", 200,
@@ -48,7 +48,7 @@ public class ModSpells {
     );
     public static Spell MAGIC_MISSILE = SpellKeeper.RegisterSpell(
             new MagicMissileSpell(30, SpellSchools.ARCANA, 20, "Magic Missile",
-                    200 ,identifierCreator("magic_missile"), 1, MAX_LEVEL, 20, 400)
+                    200 ,identifierCreator("magic_missile"), 1, MAX_LEVEL, 20, 400, 40, 25)
     );
     public static Spell HEAL_OVER_TIME = SpellKeeper.RegisterSpell(
             new ToggleHealling(85, SpellSchools.HOLY, 0, "Regenerate Health", 200,
@@ -193,7 +193,12 @@ public class ModSpells {
     public static String FormatSpell(String name, int cost, float tickprice, int level) {
         return FormatSpell(name,cost,level) + " + " + tickprice + "/s";
     }
-
+    public static StringBuilder secStringBuilder(int seccost) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Alt - Mana: ");
+        builder.append(seccost);
+        return builder;
+    }
     public static void init() {
         N3rdyR0b1nsSpellEngine.LOGGER.info("Registering Magic Spells for " + N3rdyR0b1nsSpellEngine.MOD_ID);
         new NullSpell();

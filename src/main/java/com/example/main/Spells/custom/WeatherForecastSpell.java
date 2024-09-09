@@ -37,6 +37,7 @@ public class WeatherForecastSpell extends Spell {
             }
             nbt.putByte("Weather", weather);
             stack.setSubNbt(NbtS.getNbt(stack), nbt);
+            this.text = GetText();
         } else {
             WeatherTypes[weather].Perform(stack, player, world, Level());
         }

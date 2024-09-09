@@ -26,11 +26,15 @@ import org.jetbrains.annotations.Nullable;
 public class ElectricalZapSpell extends Spell {
     private int seccooldown;
     private int seccooldownprogress = 0;
-    public ElectricalZapSpell(int manaCost, SpellSchool school, int chargeTime, int cooldown, Identifier texture, int min, int max, int up, int seccooldown) {
+    private int seccost;
+    private int secupcost;
+    public ElectricalZapSpell(int manaCost, SpellSchool school, int chargeTime, int cooldown, Identifier texture, int min, int max, int up, int seccooldown, int scost, int uscost) {
         super(0, school, chargeTime, "Zap", cooldown, texture, min, max, up);
         super.finishManaCost = manaCost;
         super.text = GetText();
         this.seccooldown = seccooldown;
+        this.seccost = scost;
+        this.secupcost = uscost;
     }
 
     @Override
@@ -120,12 +124,16 @@ public class ElectricalZapSpell extends Spell {
     }
 
     public boolean canSecCastSpell(PlayerEntity player, World world, ItemStack stack,NbtCompound nbt) {
-        return getCooldownProgress(player,stack) <= 0;
+        return getCooldownProgress(player,stack) <= 0 && ((ManaContainer)player).getMana().getStoredMana() >= SecManaCost();
     }
 
     public void applySecCost(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
-        if (GenericSpellAbilities.HasTarget(nbt)) {
-            super.applySecCost(player, stack, nbt, slot);
-        }
+        ((ManaContainer)player).getMana().removeMana(SecManaCost());
+    }
+    private int SecManaCost() {
+        return secupcost * Level() + seccost;
+    }
+    public String getExtraInfo(ItemStack stack) {
+        return "Alt - Mana: " + SecManaCost();
     }
 }

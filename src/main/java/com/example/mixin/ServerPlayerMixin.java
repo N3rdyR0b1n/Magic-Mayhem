@@ -1,31 +1,34 @@
 package com.example.mixin;
 
 import com.example.main.SpellUtil.AttributeBuffable;
+import com.example.main.SpellUtil.GenericUtil;
+import com.example.main.SpellUtil.ProcessedDamageSource;
 import com.google.common.collect.Multimap;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import oshi.util.tuples.Pair;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import javax.security.auth.callback.Callback;
 import java.util.*;
 
-@Mixin(LivingEntity.class)
+@Mixin(PlayerEntity.class)
 public abstract class ServerPlayerMixin implements AttributeBuffable {
 
-    @Shadow public abstract AttributeContainer getAttributes();
+    @Shadow public abstract boolean damage(DamageSource source, float amount);
 
     private HashMap<String,Multimap<EntityAttribute, EntityAttributeModifier>> attributebuffs = new HashMap();
     private HashMap<String,Integer> durations = new HashMap();
     @Inject(method = "tick", at = @At(value = "HEAD"))
     private void tickStatusEffects(CallbackInfo cir) {
-         AttributeContainer container = getAttributes();
+         AttributeContainer container = ((PlayerEntity) (Object) (this)).getAttributes();
          for (Iterator<Map.Entry<String,Multimap<EntityAttribute, EntityAttributeModifier>>> it = attributebuffs.entrySet().iterator(); it.hasNext();) {
              String key = it.next().getKey();
              Multimap<EntityAttribute, EntityAttributeModifier> modifiers = attributebuffs.get(key);
@@ -71,5 +74,14 @@ public abstract class ServerPlayerMixin implements AttributeBuffable {
         return false;
     }
 
+    @Inject(method = "damage", at = @At(value = "HEAD"))
+    private void tickStatusEffects(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if ((source instanceof ProcessedDamageSource)) {
+            return;
+        }
+        ProcessedDamageSource newsource = new ProcessedDamageSource(source.getTypeRegistryEntry(), source.getSource(), source.getAttacker(), source.getPosition());
+        cir.setReturnValue(GenericUtil.HandleDamage(newsource, amount, (PlayerEntity) (Object) this));
+
+    }
 
 }
