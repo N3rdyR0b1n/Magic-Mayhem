@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 
 public class FrostArmorSpell extends ContinousUsageSpell {
 
-    private String id = N3rdyR0b1nsSpellEngine.MOD_ID+name;
+    private static String id = N3rdyR0b1nsSpellEngine.MOD_ID+"Frozen Shield";
     private final int amount;
     public FrostArmorSpell(int manaCost, SpellSchool school, int chargeTime, String name, int cooldown, Identifier texture, int useTime, boolean needsHeld, int overtimecost, int armor, int min, int max, int up, int uptime) {
         super(manaCost, school, chargeTime, name, cooldown, texture, useTime, needsHeld, overtimecost, min, max, up, uptime);

@@ -29,7 +29,7 @@ import java.util.UUID;
 
 public class HasteSpell extends ContinousUsageSpell {
 
-    private String id = N3rdyR0b1nsSpellEngine.MOD_ID+"Haste";
+    private static String id = N3rdyR0b1nsSpellEngine.MOD_ID+"Haste";
 
     private String usid = N3rdyR0b1nsSpellEngine.MOD_ID+"Haste";
     private Integer entityid = null;

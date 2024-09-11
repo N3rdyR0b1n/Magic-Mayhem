@@ -151,7 +151,9 @@ public class MagicMissileSpell extends Spell {
     }
     @Override
     public void applySecCost(PlayerEntity player, ItemStack stack, NbtCompound nbt, int slot) {
-        ((ManaContainer)player).getMana().removeMana(SecManaCost());
+        if (GenericSpellAbilities.HasTarget(nbt)) {
+            ((ManaContainer) player).getMana().removeMana(SecManaCost());
+        }
     }
     private int SecManaCost() {
         return secupcost * Level() + seccost;

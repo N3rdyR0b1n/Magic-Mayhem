@@ -64,7 +64,7 @@ public class GenericSpellAbilities {
     public static HitValues MarkHitscanSelect(World world, PlayerEntity player, NbtCompound nbtCompound, float range, boolean ignoreblocks) {
         HitValues values = HitscanSelect(world, player, range, ignoreblocks);
         if (values.getTarget() != null) {
-            nbtCompound.putBoolean("Hit", true);
+            PutTarget(nbtCompound);
         }
         return values;
     }
@@ -73,6 +73,9 @@ public class GenericSpellAbilities {
     }
     public static void ClearTarget(NbtCompound nbtCompound) {
         nbtCompound.putBoolean("Hit", false);
+    }
+    public static void PutTarget(NbtCompound compound) {
+        compound.putBoolean("Hit", true);
     }
     public static HitValues HitscanSelect(World world, PlayerEntity player , float range, boolean ignoreblocks) {
         Vec3d start = player.getEyePos();
