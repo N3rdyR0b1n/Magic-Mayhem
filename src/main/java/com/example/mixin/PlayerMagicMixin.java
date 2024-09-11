@@ -3,15 +3,13 @@ package com.example.mixin;
 
 import com.example.N3rdyR0b1nsSpellEngine;
 import com.example.main.Attributes.ModAttributes;
-import com.example.main.SpellUtil.AttributeModifierAbleItem;
-import com.example.main.SpellUtil.DodgeContainer;
-import com.example.main.SpellUtil.Mana;
-import com.example.main.SpellUtil.ManaContainer;
+import com.example.main.SpellUtil.*;
 import com.google.common.collect.Multimap;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -146,9 +144,16 @@ public abstract class PlayerMagicMixin implements ManaContainer, DodgeContainer 
         oldmodifiers = new Multimap[inventory.size()];
     }
     public int getDodges() {
+        if (persistantSaveData == null) {
+            persistantSaveData = new NbtCompound();
+        }
         return persistantSaveData.getInt("Dodges");
     }
     public void setDodges(int amount) {
+        if (persistantSaveData == null) {
+            persistantSaveData = new NbtCompound();
+        }
         persistantSaveData.putInt("Dodges", amount);
     }
+
 }

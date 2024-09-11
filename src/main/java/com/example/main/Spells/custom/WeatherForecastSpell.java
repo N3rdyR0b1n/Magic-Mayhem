@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class WeatherForecastSpell extends Spell {
-    private NameCostAction[] WeatherTypes;
+    private static NameCostAction[] WeatherTypes;
     private byte weather = 0;
     public WeatherForecastSpell(int sun, int rain, int thunder, int manacost, SpellSchool school, int chargeTime, String name, int cooldown, Identifier texture, int min, int max, int up) {
         super(0, school, chargeTime, name, cooldown, texture, min, max, up);

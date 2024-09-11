@@ -180,6 +180,11 @@ public class ModSpells {
             WitherSkullSpell(100, SpellSchools.SHADOW, 0, "Wither Skull", 60,
             identifierCreator("wither_skull"), 6, MAX_LEVEL, 55));
 
+    public static Spell DODGE = SpellKeeper.RegisterSpell(
+            new NuhUhSpell(215, SpellSchools.ARCANA, 800, "dodge", 2000,
+                    identifierCreator("dodge"), 8, 9, 100)
+    );
+
     public static String FormatSpell(String name, int cost, int level) {
         StringBuilder builder = new StringBuilder();
         builder.append(name);
