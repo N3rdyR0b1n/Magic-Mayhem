@@ -91,8 +91,10 @@ public class ModSpells {
     public static Spell WEATHER_FORECAST = SpellKeeper.RegisterSpell(new WeatherForecastSpell(
             75,100,125,200, SpellSchools.AIR, 0, "Weather Forecast",1200, identifierCreator("controll_weather"), 5, MAX_LEVEL, 75
     ));
-    public static Spell GRAVITY_GRAB = SpellKeeper.RegisterSpell(new CommandGrabSpell(50, SpellSchools.ARCANA, 0,
-            "Telekinesis", 900, identifierCreator("telekinesis"), 72000, true, 20, 7, MAX_LEVEL, 75));
+    public static Spell GRAVITY_GRAB = SpellKeeper.RegisterSpell(
+            new CommandGrabSpell(50, SpellSchools.ARCANA, 0,
+            "Telekinesis", 900, identifierCreator("telekinesis"),
+                    72000, true, 20, 7, MAX_LEVEL, 75));
     public static Spell LEVITATE = SpellKeeper.RegisterSpell(new LevitateOpponentSpell(
             25, SpellSchools.AIR, 0, "Levitate", 100,
             identifierCreator("levitate"), 300, true, 1, 3, MAX_LEVEL, 1));

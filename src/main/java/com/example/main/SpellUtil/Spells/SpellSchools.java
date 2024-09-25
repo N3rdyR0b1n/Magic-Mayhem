@@ -24,6 +24,6 @@ public class SpellSchools {
     public static SpellSchool FIRE = register(new SpellSchool(16748800, "Fire"));
     public static SpellSchool ICE = register( new SpellSchool(6732031, "Ice"));
     public static SpellSchool AIR = register(new SpellSchool(15132390, "Air"));
-    public static SpellSchool  ARCANA= register(new SpellSchool(15505151, "Arcana"));
+    public static SpellSchool ARCANA= register(new SpellSchool(15505151, "Arcana"));
     public static SpellSchool SHADOW= register(new SpellSchool(4390722,"Shadow"));
 }
