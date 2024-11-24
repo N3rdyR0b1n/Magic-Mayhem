@@ -58,7 +58,6 @@ public class GenericSpellAbilities {
                     return;
                 }
             }
-            stack.addEnchantment(Enchantments.EFFICIENCY, 1);
         }
     }
     public static HitValues MarkHitscanSelect(World world, PlayerEntity player, NbtCompound nbtCompound, float range, boolean ignoreblocks) {

@@ -23,7 +23,7 @@ public class AirDraftSpell extends Spell {
         if (world.isClient && !player.isFallFlying()) {
             Vec3d start = player.getEyePos();
             Vec3d end = player.getEyePos().add(player.getRotationVec(0.5f).multiply(1));
-            Vec3d direction = end.subtract(start).normalize().multiply(0.75D + (double) Level() /3);
+            Vec3d direction = end.subtract(start).normalize().multiply(0.75f + (double) Level() /3);
             player.addVelocity(direction);
         }
         world.playSound(null, player.getBlockPos(), SoundEvents.ITEM_TRIDENT_RIPTIDE_3, SoundCategory.PLAYERS, 2, 0.75f);
